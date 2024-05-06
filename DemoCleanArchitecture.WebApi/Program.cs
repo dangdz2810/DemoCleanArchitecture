@@ -65,16 +65,16 @@ builder.Services.AddSwaggerGen(c =>
 });
 builder.Services.AddHttpContextAccessor();
 
-builder.Services.AddSingleton<IMessageQueue, RabbitMQMessageQueue>(provider =>
-{
-    var configuration = provider.GetRequiredService<IConfiguration>();
-    var hostName = configuration["RabbitMQ:HostName"];
-    var queueName = configuration["RabbitMQ:QueueName"];
-    var loggerFactory = provider.GetRequiredService<ILoggerFactory>(); // Đây là phần sửa, thêm <ILoggerFactory> để cung cấp kiểu dịch vụ cụ thể.
-    var logger = loggerFactory.CreateLogger<RabbitMQMessageQueue>();
-    // Khởi tạo và trả về một RabbitMQMessageQueue với các thông số đã cấu hình
-    return new RabbitMQMessageQueue(hostName, queueName, logger);
-});
+//builder.Services.AddSingleton<IMessageQueue, RabbitMQMessageQueue>(provider =>
+//{
+//    var configuration = provider.GetRequiredService<IConfiguration>();
+//    var hostName = configuration["RabbitMQ:HostName"];
+//    var queueName = configuration["RabbitMQ:QueueName"];
+//    var loggerFactory = provider.GetRequiredService<ILoggerFactory>(); // Đây là phần sửa, thêm <ILoggerFactory> để cung cấp kiểu dịch vụ cụ thể.
+//    var logger = loggerFactory.CreateLogger<RabbitMQMessageQueue>();
+//    // Khởi tạo và trả về một RabbitMQMessageQueue với các thông số đã cấu hình
+//    return new RabbitMQMessageQueue(hostName, queueName, logger);
+//});
 
 builder.Services.AddSingleton<IBackgroundTaskQueue, BackgroundTaskQueue>();
 

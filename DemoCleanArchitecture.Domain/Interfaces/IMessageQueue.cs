@@ -8,7 +8,7 @@ namespace DemoCleanArchitecture.Domain.Interfaces
 {
     public interface IMessageQueue
     {
-        void Publish(string message);
-        void Subscribe(Action<string> callback);
+        //void Publish(string message);
+        //void Subscribe(Action<string> callback);
     }
 }
